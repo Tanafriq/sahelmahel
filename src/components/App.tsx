@@ -179,7 +179,7 @@ export default function App() {
   );
 
   useEffect(() => {
-    const id = setInterval(() => fetch("/api/ping").catch(() => {}), 10 * 60 * 1000);
+    const id = setInterval(() => fetch("/api/ping").catch(() => {}), 5 * 60 * 1000);
     return () => clearInterval(id);
   }, []);
 
