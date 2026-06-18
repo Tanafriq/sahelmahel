@@ -1,12 +1,12 @@
 "use client";
-import { getAvatar } from "@/lib/utils";
+import { AvatarIcon } from "./AvatarSVG";
 
-interface TagProps { name: string; onRemove: (name: string) => void; }
+interface TagProps { name: string; avatar: string; onRemove: (name: string) => void; }
 
-export default function Tag({ name, onRemove }: TagProps) {
+export default function Tag({ name, avatar, onRemove }: TagProps) {
   return (
     <span className="tag-in inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold subtle-bg chip-text">
-      <span>{getAvatar(name)}</span>
+      <AvatarIcon avatarKey={avatar} size={22} />
       <span>{name}</span>
       <button
         onClick={() => onRemove(name)}

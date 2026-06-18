@@ -1,5 +1,4 @@
 export const EMOJIS = ["🎉","🎊","🍕","🎲","💸","🃏","🎰","🍾","🔥","⚡","💫","🌟","🎯","🎸"];
-export const AVATARS = ["🐱","🐶","🦊","🐻","🐼","🦁","🐯","🦄","🐸","🐺","🦋","🦉"];
 
 export const PALETTES = [
   { key: "violet", dot: "linear-gradient(135deg,#7c3aed,#ec4899,#f97316)", vars: { primary:"#7c3aed", mid:"#a855f7", accent:"#ec4899", extra:"#f97316", rgb:"168,85,247", rgb2:"124,58,237", rgb3:"236,72,153" }},
