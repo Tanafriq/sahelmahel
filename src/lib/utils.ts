@@ -1,10 +1,4 @@
-import { AVATARS, PALETTES } from "./constants";
-
-export function getAvatar(name: string): string {
-  let hash = 0;
-  for (const c of name) hash = (hash * 31 + c.charCodeAt(0)) % AVATARS.length;
-  return AVATARS[hash];
-}
+import { PALETTES } from "./constants";
 
 export function applyPalette(paletteKey: string): void {
   const palette = PALETTES.find((p) => p.key === paletteKey) || PALETTES[0];

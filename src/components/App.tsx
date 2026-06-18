@@ -2,7 +2,8 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { EMOJIS, PALETTES } from "@/lib/constants";
 import { TEXT } from "@/lib/translations";
-import { getAvatar, applyPalette, shareLink } from "@/lib/utils";
+import { applyPalette, shareLink } from "@/lib/utils";
+import { AVATAR_KEYS } from "./AvatarSVG";
 import { playDrumRoll, playVictorySound } from "@/lib/audio";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import Tag from "./Tag";
@@ -39,6 +40,7 @@ type ModalType = "mentions" | "privacy" | "cgu" | null;
 export default function App() {
   const [input, setInput] = useState("");
   const [names, setNames] = useState<string[]>([]);
+  const [avatarMap, setAvatarMap] = useState<Record<string, string>>({});
   const [phase, setPhase] = useState<Phase>("idle");
   const [currentName, setCurrentName] = useState("");
   const [winner, setWinner] = useState("");
@@ -103,6 +105,13 @@ export default function App() {
       notifyShake();
       return;
     }
+    setAvatarMap((prev) => {
+      const used = new Set(Object.values(prev));
+      const available = AVATAR_KEYS.filter((k) => !used.has(k));
+      const pool = available.length > 0 ? available : AVATAR_KEYS;
+      const key = pool[Math.floor(Math.random() * pool.length)];
+      return { ...prev, [trimmed]: key };
+    });
     setNames((prev) => [...prev, trimmed]);
     setInput("");
     inputRef.current?.focus();
@@ -111,6 +120,7 @@ export default function App() {
   const removeName = useCallback(
     (name: string) => {
       setNames((prev) => prev.filter((n) => n !== name));
+      setAvatarMap((prev) => { const next = { ...prev }; delete next[name]; return next; });
       if (winner === name) {
         setWinner("");
         setPhase("idle");
@@ -277,7 +287,7 @@ export default function App() {
           {names.length > 0 && (
             <div className={`flex flex-wrap gap-2 pt-1 ${isArabic ? "justify-end" : ""}`}>
               {names.map((n) => (
-                <Tag key={n} name={n} onRemove={removeName} />
+                <Tag key={n} name={n} avatar={avatarMap[n] ?? "cat"} onRemove={removeName} />
               ))}
             </div>
           )}
@@ -291,6 +301,7 @@ export default function App() {
           phase={phase}
           currentName={currentName}
           winner={winner}
+          winnerAvatar={avatarMap[winner] ?? "cat"}
           t={t}
           isArabic={isArabic}
         />
