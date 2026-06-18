@@ -2,7 +2,7 @@
 import Script from "next/script";
 
 const CC_LANG_MAP: Record<string, string> = {
-  FR: "fr", AR: "ar", EN: "en", IT: "it", ES: "es", TZM: "fr",
+  FR: "fr", AR: "ar", DZ: "ar", EN: "en", IT: "it", ES: "es", TZM: "fr",
 };
 
 function updateGAConsent(analyticsAccepted: boolean) {
