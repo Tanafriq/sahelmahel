@@ -14,6 +14,7 @@ export const PALETTES = [
 export const LANG_OPTIONS = [
   { key: "FR", label: "Français" },
   { key: "AR", label: "العربية" },
+  { key: "DZ", label: "دارجة جزائرية" },
   { key: "TZM", label: "ⵜⴰⵎⴰⵣⵉⵖⵜ" },
   { key: "EN", label: "English" },
   { key: "IT", label: "Italiano" },

@@ -48,6 +48,24 @@ export function FlagTZM({ size = 20 }: FlagProps) {
   );
 }
 
+export function FlagSA({ size = 20 }: FlagProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: "50%", display: "block", flexShrink: 0 }}>
+      <defs><clipPath id="c-sa"><circle cx="14" cy="14" r="14" /></clipPath></defs>
+      <g clipPath="url(#c-sa)">
+        <rect x="0" y="0" width="28" height="28" fill="#006C35" />
+        {/* Chahada */}
+        <text x="14" y="13" textAnchor="middle" fontSize="4.6" fontWeight="bold" fill="#FFFFFF" fontFamily="serif">لا إله إلا الله</text>
+        <text x="14" y="18" textAnchor="middle" fontSize="4" fontWeight="bold" fill="#FFFFFF" fontFamily="serif">محمد رسول الله</text>
+        {/* Sabre : lame + poignée */}
+        <path d="M6 22 L21 21.2 L23 20 L21 21.2 L21.5 22.4 Z" fill="#FFFFFF" />
+        <rect x="5" y="21.5" width="1.5" height="1.5" rx="0.3" fill="#FFFFFF" />
+        <line x1="6.5" y1="20.8" x2="6.5" y2="23.2" stroke="#FFFFFF" strokeWidth="0.8" />
+      </g>
+    </svg>
+  );
+}
+
 export function FlagGB({ size = 20 }: FlagProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: "50%", display: "block", flexShrink: 0 }}>
@@ -94,5 +112,5 @@ export function FlagES({ size = 20 }: FlagProps) {
 }
 
 export const FLAG_MAP: Record<string, React.ComponentType<{ size?: number }>> = {
-  FR: FlagFR, AR: FlagDZ, TZM: FlagTZM, EN: FlagGB, IT: FlagIT, ES: FlagES,
+  FR: FlagFR, AR: FlagSA, DZ: FlagDZ, TZM: FlagTZM, EN: FlagGB, IT: FlagIT, ES: FlagES,
 };

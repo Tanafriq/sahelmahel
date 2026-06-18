@@ -250,7 +250,7 @@ export default function LegalModal({ type, onClose, lang, t }: LegalModalProps) 
   if (!type) return null;
 
   const year = new Date().getFullYear();
-  const isArabic = lang === "AR";
+  const isArabic = lang === "AR" || lang === "DZ";
 
   const titles: Record<string, string> = {
     mentions: t.modalMentionsTitle,
@@ -258,8 +258,7 @@ export default function LegalModal({ type, onClose, lang, t }: LegalModalProps) 
     cgu: t.modalCguTitle,
   };
 
-  // TZM utilise le contenu français
-  const contentLang = lang === "TZM" ? "FR" : lang;
+  const contentLang = lang === "TZM" ? "FR" : lang === "DZ" ? "AR" : lang;
   const allContent = buildContent(year);
   const langContent = allContent[contentLang] ?? allContent["FR"];
   const body = langContent[type];
