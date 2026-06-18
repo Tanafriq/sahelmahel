@@ -65,7 +65,7 @@ export default function App() {
   const inputRef = useRef<HTMLInputElement>(null);
   const rollRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const t = TEXT[lang] || TEXT["FR"];
-  const isArabic = lang === "AR";
+  const isArabic = lang === "AR" || lang === "DZ";
 
   // Sync body class & html attrs
   useEffect(() => {
@@ -212,7 +212,7 @@ export default function App() {
         <div className="flex items-start justify-between gap-3" dir="ltr">
           <div className="header-title">
             <h1
-              className={`font-black plain-text tracking-tight ${lang === "ES" || lang === "TZM" ? "text-2xl mt-[7px]" : "text-3xl"} whitespace-nowrap`}
+              className={`font-black plain-text tracking-tight ${lang === "ES" || lang === "TZM" || lang === "DZ" ? "text-2xl mt-[7px]" : "text-3xl"} whitespace-nowrap`}
               style={{ lineHeight: 1.1 }}
             >
               {t.title}

@@ -31,11 +31,11 @@ export default function SlotDisplay({ phase, currentName, winner, t, isArabic }:
   );
 
   return (
-    <div className="slot-display rounded-2xl p-8 flex flex-col items-center justify-center min-h-[120px] glow-pulse">
-      <div className="winner-pop float text-center" dir={isArabic ? "rtl" : "ltr"}>
-        <div className="text-5xl mb-2">{getAvatar(winner)}</div>
-        <div className="winner-text text-4xl font-black">{winner}</div>
-        <p className="mt-2 muted text-sm font-semibold">{t.winner}</p>
+    <div className="slot-display rounded-2xl p-8 flex flex-col items-center justify-center min-h-[120px] winner-flash">
+      <div className="text-center" dir={isArabic ? "rtl" : "ltr"}>
+        <div className="text-5xl mb-2 winner-avatar-anim">{getAvatar(winner)}</div>
+        <div className="winner-text text-4xl font-black winner-name-anim">{winner}</div>
+        <p className="mt-2 muted text-sm font-semibold winner-label-anim">{t.winner}</p>
       </div>
     </div>
   );
