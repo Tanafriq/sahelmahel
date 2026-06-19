@@ -324,7 +324,7 @@ export default function App() {
           </button>
           <div className={`flex gap-2 ${isArabic ? "flex-row-reverse" : ""}`}>
             <button
-              onClick={() => window.open("QRcode.pdf", "_blank")}
+              onClick={() => window.open(`QRcode${lang}.pdf`, "_blank")}
               className="qr-share-btn flex-1 py-3 rounded-[16px] title-soft font-semibold text-sm glass hover:opacity-80 transition-all flex items-center justify-center gap-2"
             >
               <span>📱</span>
