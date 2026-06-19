@@ -76,7 +76,7 @@ export const TEXT: Record<string, Translation> = {
   DZ: {
     title: "شكون يخلص ؟", subtitle: "! الزهر هو لي يخير",
     addFriends: "زيد صحابك", placeholder: "ﺁسم المكراش...",
-    helper: "زيد معانا 2 عباد باش تبدا 👆",
+    helper: "زيد 2 عباد باش تبدا 👆",
     drawing: "أصبر راني نخلط ...", cta: "ابدا التخلاط !",
     winner: "روح لــــلاكاس 🎉",
     replay: "🔄 عاود ألعب", copy: "📋 كوبي",
