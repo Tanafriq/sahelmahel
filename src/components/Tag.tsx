@@ -1,18 +1,28 @@
 "use client";
 import { AvatarIcon } from "./AvatarSVG";
 
-interface TagProps { name: string; avatar: string; onRemove: (name: string) => void; }
+interface TagProps {
+  name: string;
+  avatar: string;
+  index: number;
+  leaving?: boolean;
+  onRemove: (name: string) => void;
+}
 
-export default function Tag({ name, avatar, onRemove }: TagProps) {
+export default function Tag({ name, avatar, index, leaving, onRemove }: TagProps) {
   return (
-    <span className="tag-in inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold subtle-bg chip-text">
-      <AvatarIcon avatarKey={avatar} size={22} />
-      <span>{name}</span>
-      <button
-        onClick={() => onRemove(name)}
-        className="ml-1 w-4 h-4 rounded-full flex items-center justify-center hover:text-white hover:bg-purple-500 transition-all text-xs font-bold"
-        aria-label={`Retirer ${name}`}>
-        ×
+    <span
+      className={`chip ${leaving ? "chip-out" : "chip-in"}`}
+      style={{ ["--chip-tilt" as string]: `${index % 2 ? 2 : -2}deg` }}
+    >
+      <span className="chip-avatar">
+        <AvatarIcon avatarKey={avatar} size={26} />
+      </span>
+      <span className="chip-name">{name}</span>
+      <button onClick={() => onRemove(name)} className="chip-x" aria-label={`Retirer ${name}`}>
+        <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+          <path d="M2 2 L8 8 M8 2 L2 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </svg>
       </button>
     </span>
   );
