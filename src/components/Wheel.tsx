@@ -246,7 +246,22 @@ const Wheel = forwardRef<WheelHandle, WheelProps>(function Wheel(
           </span>
         ) : (
           <span className="hub-coin" aria-hidden="true">
-            €
+            {/* Sac d'argent */}
+            <svg width="34" height="34" viewBox="0 0 32 32">
+              <path d="M12 4 Q16 7 20 4 L18.5 9 H13.5Z" fill="currentColor" />
+              <path d="M12.5 9.5 H19.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <path
+                d="M13 11 Q5 17 6 23 Q7 29 16 29 Q25 29 26 23 Q27 17 19 11Z"
+                fill="currentColor"
+              />
+              <path
+                d="M18.6 16.6 Q17.8 15.4 16 15.4 Q13.4 15.4 13.4 17.6 Q13.4 19.4 16 19.8 Q18.6 20.2 18.6 22.2 Q18.6 24.4 16 24.4 Q14 24.4 13.2 23 M16 13.6 V26.2"
+                stroke="#fde68a"
+                strokeWidth="1.7"
+                fill="none"
+                strokeLinecap="round"
+              />
+            </svg>
           </span>
         )}
       </button>

@@ -245,7 +245,7 @@ export default function App() {
           {
             id: Date.now(),
             name: picked,
-            time: new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", hour12: false }),
+            time: new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
             emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
           },
           ...prev.slice(0, 9),
