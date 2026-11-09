@@ -10,13 +10,13 @@
    TOKENS — la palette choisie (--pal-*) pilote tout le reste
    ══════════════════════════════════════════════════════════════ */
 :root {
-  --pal-primary: #7c3aed;
-  --pal-mid: #a855f7;
-  --pal-accent: #ec4899;
-  --pal-extra: #f97316;
-  --pal-rgb: 168, 85, 247;
-  --pal-rgb2: 124, 58, 237;
-  --pal-rgb3: 236, 72, 153;
+  --pal-primary: #0369a1;
+  --pal-mid: #0ea5e9;
+  --pal-accent: #06b6d4;
+  --pal-extra: #38bdf8;
+  --pal-rgb: 14, 165, 233;
+  --pal-rgb2: 3, 105, 161;
+  --pal-rgb3: 6, 182, 212;
 
   --gold: #fcd34d;
   --gold-deep: #b45309;

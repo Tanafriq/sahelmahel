@@ -270,7 +270,7 @@ const INIT_SCRIPT = `(function(){try{
     rose:{primary:'#9f1239',mid:'#e11d48',accent:'#f43f5e',extra:'#fb7185',rgb:'244,63,94',rgb2:'159,18,57',rgb3:'251,113,133'},
     indigo:{primary:'#4338ca',mid:'#6366f1',accent:'#818cf8',extra:'#a78bfa',rgb:'99,102,241',rgb2:'67,56,202',rgb3:'129,140,248'}
   };
-  var v=m[pk]||m.violet;
+  var v=m[pk]||m.ocean;
   var r=document.documentElement.style;
   r.setProperty('--pal-primary',v.primary);r.setProperty('--pal-mid',v.mid);
   r.setProperty('--pal-accent',v.accent);r.setProperty('--pal-extra',v.extra);

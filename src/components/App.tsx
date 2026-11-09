@@ -102,7 +102,7 @@ export default function App() {
   const systemTheme =
     typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   const [theme, setTheme] = useLocalStorage("qui-paye-theme", systemTheme);
-  const [palette, setPalette] = useLocalStorage("qui-paye-palette", "violet");
+  const [palette, setPalette] = useLocalStorage("qui-paye-palette", "ocean");
 
   const inputRef = useRef<HTMLInputElement>(null);
   const wheelRef = useRef<WheelHandle>(null);
