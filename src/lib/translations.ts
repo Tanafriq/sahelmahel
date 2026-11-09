@@ -79,7 +79,7 @@ export const TEXT: Record<string, Translation> = {
     helper: "زيد 2 عباد باش تبدا ",
     drawing: "أصبر راني نخلط ...", cta: "ابدا التخلاط !",
     winner: "روح لــــلاكاس ",
-    replay: "🔄 عاود ألعب", copy: "📋 كوبي",
+    replay: "🔄 عاود خلط", copy: "📋 كوبي",
     history: "الأرشيف تاع التيرﺍيج", emptyHistory: "مازال ما درنا حتى تيرﺍيج...",
     historyTitle: "الأرشيف", languageTitle: "اللغة", themeTitle: "الستيل", paletteTitle: "الألوان",
     qrcode: "QR كود", share: "بارطاجي",

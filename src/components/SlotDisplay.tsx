@@ -30,7 +30,8 @@ export default function SlotDisplay({ phase, currentName, winner, t, isArabic, r
       )}
       {phase === "winner" && (
         <div key={`w-${winner}`} className="verdict-win">
-          <p className="verdict-name">
+          {/* Lettres en inline-block : on fixe la direction pour éviter l'inversion en RTL */}
+          <p className="verdict-name" dir={split ? "ltr" : "rtl"}>
             {Array.from(winner).map((ch, i) =>
               !split ? null : (
                 <span key={i} className="verdict-letter" style={{ animationDelay: `${0.15 + i * 0.045}s` }}>
