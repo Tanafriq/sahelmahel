@@ -13,7 +13,7 @@ export function applyPalette(paletteKey: string): void {
 }
 
 export async function shareLink(shareText: string, fallbackMsg: string): Promise<void> {
-  const url = "https://www.sahelmahel.com/";
+  const url = "https://sahelmahel.com/";
   try {
     if (navigator.share) {
       await navigator.share({ title: "Qui paye ?", text: shareText, url });

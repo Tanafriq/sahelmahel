@@ -1,7 +1,7 @@
 // Contenu SEO partagé entre la page (texte visible) et le JSON-LD (layout).
 // Google exige que les questions du balisage FAQPage soient visibles sur la page.
 
-export const BASE_URL = "https://www.sahelmahel.com";
+export const BASE_URL = "https://sahelmahel.com";
 
 export const FAQ: { q: string; a: string }[] = [
   {

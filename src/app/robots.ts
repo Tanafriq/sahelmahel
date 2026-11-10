@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://www.sahelmahel.com/sitemap.xml",
-    host: "https://www.sahelmahel.com",
+    sitemap: "https://sahelmahel.com/sitemap.xml",
+    host: "https://sahelmahel.com",
   };
 }
