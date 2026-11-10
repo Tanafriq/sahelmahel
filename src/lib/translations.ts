@@ -8,7 +8,7 @@ export interface Translation {
   paletteTitle: string; qrcode: string; share: string; shareText: string;
   shareFallback: string; copyText: TranslationFn; resultLabel: TranslationFn;
   footerMentions: string; footerPrivacy: string; footerCgu: string;
-  footerCookies: string; footerRights: string;
+  footerCookies: string; footerRights: string; footerAbout: string;
   modalMentionsTitle: string; modalPrivacyTitle: string; modalCguTitle: string;
 }
 
@@ -28,7 +28,7 @@ export const TEXT: Record<string, Translation> = {
     copyText: (name) => `${name} doit payer ! 💸`,
     resultLabel: (name) => `${name} a été tiré au sort`,
     footerMentions: "Mentions légales", footerPrivacy: "Confidentialité",
-    footerCgu: "CGU", footerCookies: "Cookies", footerRights: "Tous droits réservés",
+    footerCgu: "CGU", footerCookies: "Cookies", footerRights: "Tous droits réservés", footerAbout: "À propos",
     modalMentionsTitle: "Mentions légales",
     modalPrivacyTitle: "Politique de confidentialité",
     modalCguTitle: "Conditions générales d'utilisation",
@@ -48,7 +48,7 @@ export const TEXT: Record<string, Translation> = {
     copyText: (name) => `${name} has to pay! 💸`,
     resultLabel: (name) => `${name} was selected`,
     footerMentions: "Legal notice", footerPrivacy: "Privacy policy",
-    footerCgu: "Terms of use", footerCookies: "Cookies", footerRights: "All rights reserved",
+    footerCgu: "Terms of use", footerCookies: "Cookies", footerRights: "All rights reserved", footerAbout: "About",
     modalMentionsTitle: "Legal notice",
     modalPrivacyTitle: "Privacy policy",
     modalCguTitle: "Terms of use",
@@ -68,7 +68,7 @@ export const TEXT: Record<string, Translation> = {
     copyText: (name) => `💸 ${name} سيدفع!`,
     resultLabel: (name) => `تم اختيار ${name}`,
     footerMentions: "الإشعارات القانونية", footerPrivacy: "سياسة الخصوصية",
-    footerCgu: "شروط الاستخدام", footerCookies: "الكوكيز", footerRights: "جميع الحقوق محفوظة",
+    footerCgu: "شروط الاستخدام", footerCookies: "الكوكيز", footerRights: "جميع الحقوق محفوظة", footerAbout: "حول التطبيق",
     modalMentionsTitle: "الإشعارات القانونية",
     modalPrivacyTitle: "سياسة الخصوصية",
     modalCguTitle: "شروط الاستخدام",
@@ -88,7 +88,7 @@ export const TEXT: Record<string, Translation> = {
     copyText: (name) => `لازم ${name} يخلص! 💸`,
     resultLabel: (name) => `خرج الإسم تاع ${name}`,
     footerMentions: "الإشعارات القانونية", footerPrivacy: "سياسة الخصوصية",
-    footerCgu: "شروط الاستخدام", footerCookies: "الكوكيز", footerRights: "جميع الحقوق محفوظة",
+    footerCgu: "شروط الاستخدام", footerCookies: "الكوكيز", footerRights: "جميع الحقوق محفوظة", footerAbout: "على التطبيق",
     modalMentionsTitle: "الإشعارات القانونية",
     modalPrivacyTitle: "سياسة الخصوصية",
     modalCguTitle: "شروط الاستخدام",
@@ -108,7 +108,7 @@ export const TEXT: Record<string, Translation> = {
     copyText: (name) => `${name} ⵉⵍⴰⵇ ⴰⴷ ⵉⵅⵍⵍⵚ ! 💸`,
     resultLabel: (name) => `${name} ⵢⵜⵜⵡⴰⴳⵔⴰⵏ ⴷⴳ ⵜⴰⵙⵖⴰⵔⵜ`,
     footerMentions: "Mentions légales", footerPrivacy: "Confidentialité",
-    footerCgu: "CGU", footerCookies: "Cookies", footerRights: "Tous droits réservés",
+    footerCgu: "CGU", footerCookies: "Cookies", footerRights: "Tous droits réservés", footerAbout: "À propos",
     modalMentionsTitle: "Mentions légales",
     modalPrivacyTitle: "Politique de confidentialité",
     modalCguTitle: "Conditions générales d'utilisation",
@@ -128,7 +128,7 @@ export const TEXT: Record<string, Translation> = {
     copyText: (name) => `${name} deve pagare! 💸`,
     resultLabel: (name) => `${name} è stato estratto`,
     footerMentions: "Note legali", footerPrivacy: "Privacy",
-    footerCgu: "Termini d'uso", footerCookies: "Cookie", footerRights: "Tutti i diritti riservati",
+    footerCgu: "Termini d'uso", footerCookies: "Cookie", footerRights: "Tutti i diritti riservati", footerAbout: "Informazioni",
     modalMentionsTitle: "Note legali",
     modalPrivacyTitle: "Informativa sulla privacy",
     modalCguTitle: "Termini di utilizzo",
@@ -148,7 +148,7 @@ export const TEXT: Record<string, Translation> = {
     copyText: (name) => `¡${name} tiene que pagar! 💸`,
     resultLabel: (name) => `${name} ha sido seleccionado`,
     footerMentions: "Aviso legal", footerPrivacy: "Privacidad",
-    footerCgu: "Términos de uso", footerCookies: "Cookies", footerRights: "Todos los derechos reservados",
+    footerCgu: "Términos de uso", footerCookies: "Cookies", footerRights: "Todos los derechos reservados", footerAbout: "Acerca de",
     modalMentionsTitle: "Aviso legal",
     modalPrivacyTitle: "Política de privacidad",
     modalCguTitle: "Términos de uso",

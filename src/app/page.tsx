@@ -11,7 +11,7 @@ export default function Page() {
     <>
       <ClientApp />
 
-      <details className="seo-about" lang="fr">
+      <details id="a-propos" className="seo-about" lang="fr">
         <summary className="seo-toggle">À propos de Sahel Mahel</summary>
         <h2>Sahel Mahel : qui paye l&apos;addition ? Le sort décide !</h2>
         <p>

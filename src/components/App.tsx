@@ -457,6 +457,19 @@ export default function App() {
       {/* Pied de page */}
       <footer className="app-footer" dir="ltr">
         <div className="flex flex-wrap justify-center gap-x-3 gap-y-1">
+          <button
+            onClick={() => {
+              // Section rendue côté serveur (src/app/page.tsx), repliée par défaut.
+              const about = document.getElementById("a-propos") as HTMLDetailsElement | null;
+              if (!about) return;
+              sfx.click();
+              about.open = !about.open;
+              if (about.open) requestAnimationFrame(() => about.scrollIntoView({ behavior: "smooth", block: "start" }));
+            }}
+            className="footer-link"
+          >
+            {t.footerAbout}
+          </button>
           {(
             [
               { label: t.footerMentions, key: "mentions" },
