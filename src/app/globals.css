@@ -148,10 +148,10 @@ body {
 }
 
 /* ── Titre ── */
-.header-title { min-width: 150px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.header-title { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .app-title {
   font-weight: 800;
-  font-size: 2.35rem;
+  font-size: clamp(1.6rem, 7.6vw, 2.35rem);
   line-height: 1;
   letter-spacing: -0.035em;
   font-stretch: 85%;
@@ -162,7 +162,7 @@ body {
   color: var(--ink);
   text-shadow: 3px 3px 0 color-mix(in oklab, var(--pal-accent) 70%, transparent);
 }
-.app-title.is-long { font-size: 1.85rem; margin-top: 6px; }
+.app-title.is-long { font-size: clamp(1.25rem, 5.6vw, 1.85rem); margin-top: 6px; }
 .title-letter {
   display: inline-block;
   animation: letter-drop 0.7s var(--spring) both;
@@ -582,23 +582,30 @@ body {
    ══════════════════════════════════════════════════════════════ */
 .receipt {
   padding: 0 14px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.25));
   animation: receipt-in 0.6s var(--spring) both;
 }
-@keyframes receipt-in { from { transform: translateY(-20px) rotate(-3deg); opacity: 0; } to { transform: rotate(-0.8deg); opacity: 1; } }
+@keyframes receipt-in { from { transform: translateY(-20px) rotate(-3deg); opacity: 0; } to { transform: rotate(-0.6deg); opacity: 1; } }
 .receipt-paper {
   position: relative;
-  padding: 18px 18px 26px;
+  padding: 18px 18px 16px;
   color: var(--paper-ink);
   background: var(--paper);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
-  transform: rotate(-0.8deg);
   --zz: 9px;
-  -webkit-mask:
-    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(var(--zz) * 2) var(--zz) repeat-x,
-    linear-gradient(#000 0 0) top / 100% calc(100% - var(--zz)) no-repeat;
-  mask:
-    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / calc(var(--zz) * 2) var(--zz) repeat-x,
-    linear-gradient(#000 0 0) top / 100% calc(100% - var(--zz)) no-repeat;
+}
+/* Bord déchiré : dents dessinées dans la couleur du papier, collées sous le ticket
+   (évite la ligne de jointure du masque sur les écrans haute densité). */
+.receipt-paper::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(100% - 1px);
+  height: var(--zz);
+  background: var(--paper);
+  --teeth: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='9' viewBox='0 0 18 9' preserveAspectRatio='none'%3E%3Cpath d='M-0.5 0H18.5L9 9Z'/%3E%3C/svg%3E");
+  -webkit-mask: var(--teeth) 0 0 / calc(var(--zz) * 2) 100% round no-repeat;
+  mask: var(--teeth) 0 0 / calc(var(--zz) * 2) 100% round no-repeat;
 }
 .receipt-title {
   text-align: center;
@@ -794,3 +801,33 @@ body.theme-light #cc-main .pm {
 #cc-main .pm__title            { font-weight: 800; font-size: 15px; }
 #cc-main .pm__section--toggle  { border-radius: 14px !important; }
 #cc-main .pm__section-toggle   { border-radius: 20px !important; }
+
+/* ── Petits téléphones (≤ 360px) : l'en-tête tient sur une ligne ── */
+@media (max-width: 360px) {
+  .shell { padding-left: 0.75rem; padding-right: 0.75rem; }
+  .icon-btn { width: 34px; height: 34px; border-radius: 11px; }
+  .receipt { padding: 0 6px; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SECTION SEO « À propos » (rendue côté serveur, sous l'application)
+   ══════════════════════════════════════════════════════════════ */
+.seo-about {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 440px;
+  margin-top: -64px;
+  padding: 0 1rem 120px;
+  color: var(--ink-3);
+  font-size: 0.9rem; line-height: 1.6;
+}
+.seo-about h2 { margin: 1.6rem 0 0.5rem; font-size: 1.05rem; font-weight: 800; color: var(--ink); }
+.seo-about p { margin: 0.4rem 0; }
+.seo-about strong { color: var(--ink-2); }
+.seo-about ul, .seo-about ol { margin: 0.4rem 0; padding-inline-start: 1.25rem; }
+.seo-about ul { list-style: disc; }
+.seo-about ol { list-style: decimal; }
+.seo-about li { margin: 0.25rem 0; }
+.seo-about details { border-bottom: 1px solid var(--card-line); padding: 0.55rem 0; }
+.seo-about summary { cursor: pointer; font-weight: 700; color: var(--ink-2); }
+.seo-about details p { margin-top: 0.4rem; }
+.seo-about [dir="rtl"] { font-family: "Cairo", sans-serif; text-align: right; }
