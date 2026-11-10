@@ -1,5 +1,3 @@
-export const EMOJIS = ["🎉","🎊","🍕","🎲","💸","🃏","🎰","🍾","🔥","⚡","💫","🌟","🎯","🎸"];
-
 export const PALETTES = [
   { key: "ocean",  dot: "linear-gradient(135deg,#0369a1,#0ea5e9,#06b6d4)", vars: { primary:"#0369a1", mid:"#0ea5e9", accent:"#06b6d4", extra:"#38bdf8", rgb:"14,165,233", rgb2:"3,105,161", rgb3:"6,182,212" }},
   { key: "violet", dot: "linear-gradient(135deg,#7c3aed,#ec4899,#f97316)", vars: { primary:"#7c3aed", mid:"#a855f7", accent:"#ec4899", extra:"#f97316", rgb:"168,85,247", rgb2:"124,58,237", rgb3:"236,72,153" }},

@@ -148,7 +148,7 @@ body {
 }
 
 /* ── Titre ── */
-.header-title { min-width: 150px; }
+.header-title { min-width: 150px; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .app-title {
   font-weight: 800;
   font-size: 2.35rem;
@@ -321,19 +321,20 @@ body {
 }
 
 /* Puces des amis */
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .chip {
   display: inline-flex; align-items: center; gap: 6px;
-  padding: 4px 6px 4px 4px;
+  padding-block: 4px; padding-inline: 4px 6px;
+  max-width: 100%;
   border-radius: 99px;
   font-size: 0.9rem; font-weight: 700;
   color: var(--ink);
   background: color-mix(in oklab, var(--pal-mid) 18%, var(--field));
   border: 1px solid rgba(var(--pal-rgb), 0.35);
-  transform: rotate(var(--chip-tilt));
+  vertical-align: middle;
   transition: transform 0.3s var(--spring);
 }
-.chip:hover { transform: rotate(0deg) scale(1.06); }
+.chip:hover { transform: scale(1.06); }
 .chip-avatar {
   display: grid; place-items: center;
   width: 30px; height: 30px; border-radius: 50%;
@@ -341,7 +342,8 @@ body {
 }
 .chip:hover .chip-avatar { animation: avatar-wiggle 0.5s ease-in-out; }
 @keyframes avatar-wiggle { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-14deg); } 75% { transform: rotate(14deg); } }
-.chip-name { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chip-name { min-width: 0; max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.5; padding-block: 1px; unicode-bidi: isolate; }
+.chip-avatar, .chip-x { flex-shrink: 0; }
 .chip-x {
   display: grid; place-items: center;
   width: 22px; height: 22px; border-radius: 50%;
@@ -355,7 +357,7 @@ body {
 .chip-out { animation: chip-out 0.26s ease-in forwards; pointer-events: none; }
 @keyframes chip-in {
   0%   { transform: scale(0) rotate(-30deg) translateY(20px); opacity: 0; }
-  100% { transform: rotate(var(--chip-tilt)); opacity: 1; }
+  100% { transform: none; opacity: 1; }
 }
 @keyframes chip-out {
   to { transform: scale(0.2) rotate(40deg) translateY(-20px); opacity: 0; }
@@ -604,13 +606,13 @@ body {
   padding-bottom: 10px; margin-bottom: 8px;
   border-bottom: 2px dashed rgba(43, 35, 51, 0.25);
 }
-.receipt-list { list-style: none; display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; }
-.receipt-row { display: flex; align-items: baseline; gap: 8px; font-size: 0.95rem; }
+.receipt-list { list-style: none; display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; padding-inline-end: 12px; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: rgba(43, 35, 51, 0.3) transparent; }
+.receipt-row { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
 .receipt-new { animation: print-in 0.5s steps(6) both; }
 @keyframes print-in { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
-.receipt-emoji { font-size: 1rem; }
+.receipt-emoji { display: grid; place-items: center; flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: rgba(255, 255, 255, 0.85); box-shadow: 0 0 0 1px rgba(43, 35, 51, 0.12); }
 .receipt-name { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55%; }
-.receipt-dots { flex: 1; border-bottom: 2px dotted rgba(43, 35, 51, 0.3); transform: translateY(-4px); }
+.receipt-dots { flex: 1; border-bottom: 2px dotted rgba(43, 35, 51, 0.3); transform: translateY(3px); }
 .receipt-time { font-variant-numeric: tabular-nums; font-weight: 600; opacity: 0.7; }
 
 /* ══════════════════════════════════════════════════════════════

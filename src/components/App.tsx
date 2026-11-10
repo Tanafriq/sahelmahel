@@ -1,9 +1,9 @@
 "use client";
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
-import { EMOJIS, PALETTES } from "@/lib/constants";
+import { PALETTES } from "@/lib/constants";
 import { TEXT } from "@/lib/translations";
 import { applyPalette, shareLink } from "@/lib/utils";
-import { AVATAR_KEYS } from "./AvatarSVG";
+import { AVATAR_KEYS, AvatarIcon } from "./AvatarSVG";
 import { sfx, vibrate, setSoundEnabled as setAudioEnabled } from "@/lib/audio";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import Tag from "./Tag";
@@ -91,7 +91,7 @@ export default function App() {
   const [currentName, setCurrentName] = useState("");
   const [winner, setWinner] = useState("");
   const [sharing, setSharing] = useState(false);
-  const [history, setHistory] = useState<{ id: number; name: string; time: string; emoji: string }[]>([]);
+  const [history, setHistory] = useState<{ id: number; name: string; time: string; avatar: string }[]>([]);
   const [shake, setShake] = useState(false);
   const [flashKey, setFlashKey] = useState(0);
   const [titleWave, setTitleWave] = useState(0);
@@ -246,14 +246,14 @@ export default function App() {
             id: Date.now(),
             name: picked,
             time: new Date().toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
-            emoji: EMOJIS[Math.floor(Math.random() * EMOJIS.length)],
+            avatar: avatarMap[picked] ?? "cat",
           },
           ...prev.slice(0, 9),
         ]);
       }, 1500);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [names, palette, phase, leaving]);
+  }, [names, palette, phase, leaving, avatarMap]);
 
   const handleShare = async () => {
     sfx.click();
@@ -349,7 +349,7 @@ export default function App() {
             </button>
           </div>
           {visibleNames.length > 0 && (
-            <div className={`chips ${isArabic ? "justify-end" : ""}`}>
+            <div className="chips">
               {visibleNames.map((n, i) => (
                 <Tag
                   key={n}
@@ -440,7 +440,7 @@ export default function App() {
               <ul className="receipt-list">
                 {history.map((h, i) => (
                   <li key={h.id} className={`receipt-row ${i === 0 ? "receipt-new" : ""}`}>
-                    <span className="receipt-emoji" aria-hidden="true">{h.emoji}</span>
+                    <span className="receipt-emoji" aria-hidden="true"><AvatarIcon avatarKey={h.avatar} size={22} /></span>
                     <span className="receipt-name">{h.name}</span>
                     <span className="receipt-dots" aria-hidden="true" />
                     <span className="receipt-time">{h.time}</span>
