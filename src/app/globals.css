@@ -831,3 +831,22 @@ body.theme-light #cc-main .pm {
 .seo-about summary { cursor: pointer; font-weight: 700; color: var(--ink-2); }
 .seo-about details p { margin-top: 0.4rem; }
 .seo-about [dir="rtl"] { font-family: "Cairo", sans-serif; text-align: right; }
+
+/* Section « À propos » repliée : seul le titre est visible */
+.seo-about { margin-top: -48px; }
+.seo-about > .seo-toggle {
+  list-style: none;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 0.6rem 0;
+  font-size: 0.85rem; font-weight: 700;
+  color: var(--ink-3);
+  cursor: pointer;
+  user-select: none;
+}
+.seo-about > .seo-toggle::-webkit-details-marker { display: none; }
+.seo-about > .seo-toggle::after {
+  content: "▾";
+  transition: transform 0.25s ease;
+}
+.seo-about[open] > .seo-toggle::after { transform: rotate(180deg); }
+.seo-about > .seo-toggle:hover { color: var(--ink); }

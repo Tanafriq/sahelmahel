@@ -11,7 +11,8 @@ export default function Page() {
     <>
       <ClientApp />
 
-      <article className="seo-about" lang="fr">
+      <details className="seo-about" lang="fr">
+        <summary className="seo-toggle">À propos de Sahel Mahel</summary>
         <h2>Sahel Mahel : qui paye l&apos;addition ? Le sort décide !</h2>
         <p>
           <strong>Sahel Mahel</strong> (سهل ماهل) est une application gratuite de{" "}
@@ -64,7 +65,7 @@ export default function Page() {
         <p lang="it"><strong>Chi paga?</strong> Ruota gratuita per decidere chi paga il conto tra amici.</p>
         <p lang="es"><strong>¿Quién paga?</strong> Ruleta gratis para decidir quién paga la cuenta entre amigos.</p>
         <p lang="zgh"><strong>ⵎⵉⵯ ⵉⵅⵍⵍⵚⵏ ?</strong> Sahel Mahel s tmaziɣt.</p>
-      </article>
+      </details>
     </>
   );
 }
