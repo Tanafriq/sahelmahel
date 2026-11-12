@@ -3,10 +3,17 @@
 
 export const BASE_URL = "https://sahelmahel.com";
 
+// hreflang : page française (/) et page arabe/darija (/ar).
+export const LANG_ALTERNATES: Record<string, string> = {
+  fr: BASE_URL + "/",
+  ar: BASE_URL + "/ar",
+  "x-default": BASE_URL + "/",
+};
+
 export const FAQ: { q: string; a: string }[] = [
   {
     q: "Qu'est-ce que Sahel Mahel ?",
-    a: "Sahel Mahel (سهل ماهل) est une application web gratuite de tirage au sort qui désigne au hasard qui paye l'addition parmi un groupe d'amis, grâce à une roue animée.",
+    a: "Sahel Mahel (ساهل ماهل) est une application web gratuite de tirage au sort qui désigne au hasard qui paye l'addition parmi un groupe d'amis, grâce à une roue animée.",
   },
   {
     q: "Comment savoir qui paye entre amis avec Sahel Mahel ?",

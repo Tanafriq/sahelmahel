@@ -82,7 +82,7 @@ function Backdrop() {
 type Phase = "idle" | "rolling" | "winner";
 type ModalType = "mentions" | "privacy" | "cgu" | null;
 
-export default function App() {
+export default function App({ defaultLang = "FR" }: { defaultLang?: string }) {
   const [input, setInput] = useState("");
   const [names, setNames] = useState<string[]>([]);
   const [leaving, setLeaving] = useState<string[]>([]);
@@ -98,7 +98,7 @@ export default function App() {
   const [modal, setModal] = useState<ModalType>(null);
 
   const [soundEnabled, setSoundEnabled] = useLocalStorage("qui-paye-sound", true);
-  const [lang, setLang] = useLocalStorage("qui-paye-lang", "FR");
+  const [lang, setLang] = useLocalStorage("qui-paye-lang", defaultLang);
   const systemTheme =
     typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   const [theme, setTheme] = useLocalStorage("qui-paye-theme", systemTheme);
@@ -125,7 +125,8 @@ export default function App() {
   }, [theme]);
 
   useEffect(() => {
-    document.documentElement.lang = lang.toLowerCase();
+    // Codes BCP 47 valides (« dz » désignerait le dzongkha).
+    document.documentElement.lang = ({ DZ: "ar-DZ", TZM: "zgh" } as Record<string, string>)[lang] ?? lang.toLowerCase();
     document.documentElement.dir = isArabic ? "rtl" : "ltr";
     (window as { updateCCLang?: (l: string) => void }).updateCCLang?.(lang);
   }, [lang, isArabic]);

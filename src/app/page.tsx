@@ -15,7 +15,7 @@ export default function Page() {
         <summary className="seo-toggle">À propos de Sahel Mahel</summary>
         <h2>Sahel Mahel : qui paye l&apos;addition ? Le sort décide !</h2>
         <p>
-          <strong>Sahel Mahel</strong> (سهل ماهل) est une application gratuite de{" "}
+          <strong>Sahel Mahel</strong> (ساهل ماهل) est une application gratuite de{" "}
           <strong>tirage au sort</strong> pour savoir <strong>qui paye</strong> entre amis :
           le café, le resto, les pizzas, le taxi ou la tournée de thé. Ajoutez les prénoms,
           lancez la <strong>roue</strong>, et le hasard désigne le payeur en quelques secondes.
@@ -52,8 +52,9 @@ export default function Page() {
 
         <h2>Dans toutes les langues</h2>
         <p dir="rtl" lang="ar-DZ">
-          <strong>سهل ماهل — شكون يخلص ؟</strong> زيد صحابك، دور العجلة، والزهر هو لي يخير شكون
-          يخلص القهوة ولا الماكلة. باطل وبلا تسجيل.
+          <strong>ساهل ماهل — شكون يخلص ؟</strong> زيد صحابك، دور العجلة، والزهر هو لي يخير شكون
+          يخلص القهوة ولا الماكلة. باطل وبلا تسجيل.{" "}
+          <a href="/ar">النسخة بالعربية</a>
         </p>
         <p dir="rtl" lang="ar">
           <strong>من يدفع ؟</strong> تطبيق مجاني للقرعة بين الأصدقاء لاختيار من يدفع الحساب.

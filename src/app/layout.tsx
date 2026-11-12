@@ -3,7 +3,7 @@ import Script from "next/script";
 import CookieConsentInit from "@/components/CookieConsentInit";
 import "./globals.css";
 
-import { BASE_URL, FAQ } from "@/lib/seo";
+import { BASE_URL, FAQ, LANG_ALTERNATES } from "@/lib/seo";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 
 const SITE_TITLE = "Sahel Mahel — Qui paye ? Tirage au sort gratuit entre amis";
 const SITE_DESC =
-  "Sahel Mahel (سهل ماهل) : la roue gratuite pour savoir qui paye l'addition entre amis. Ajoute les prénoms, lance la roue, le sort décide ! Sans inscription, sans pub, en 7 langues.";
+  "Sahel Mahel (ساهل ماهل) : la roue gratuite pour savoir qui paye l'addition entre amis. Ajoute les prénoms, lance la roue, le sort décide ! Sans inscription, sans pub, en 7 langues.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     "sahel-mahel",
     "sahel mahel qui paye",
     "sahel mahel roue",
+    "ساهل ماهل",
     "سهل ماهل",
     "qui paye",
     "qui paye l'addition",
@@ -82,10 +83,10 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  // Une seule URL pour toutes les langues (choix côté client) : pas de hreflang,
-  // qui serait ignoré ou signalé en erreur s'il pointe vers la même page.
+  // Page française (/) et page arabe/darija (/ar), liées par hreflang.
   alternates: {
     canonical: BASE_URL + "/",
+    languages: LANG_ALTERNATES,
   },
   // L'image de partage est générée par src/app/opengraph-image.tsx.
   openGraph: {
@@ -123,7 +124,7 @@ const JSON_LD_GRAPH = {
       "@id": BASE_URL + "/#website",
       url: BASE_URL + "/",
       name: "Sahel Mahel",
-      alternateName: ["SahelMahel", "Sahel-Mahel", "سهل ماهل", "Qui paye ?", "sahelmahel.com"],
+      alternateName: ["SahelMahel", "Sahel-Mahel", "ساهل ماهل", "سهل ماهل", "Qui paye ?", "sahelmahel.com"],
       description: "Roue de tirage au sort gratuite pour savoir qui paye l'addition entre amis.",
       publisher: { "@id": BASE_URL + "/#organization" },
       inLanguage: ["fr", "ar-DZ", "ar", "zgh", "en", "it", "es"],
@@ -132,7 +133,7 @@ const JSON_LD_GRAPH = {
       "@type": "Organization",
       "@id": BASE_URL + "/#organization",
       name: "Sahel Mahel",
-      alternateName: ["SahelMahel", "سهل ماهل"],
+      alternateName: ["SahelMahel", "ساهل ماهل", "سهل ماهل"],
       url: BASE_URL + "/",
       logo: {
         "@type": "ImageObject",
