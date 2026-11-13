@@ -142,8 +142,8 @@ body {
 .shell {
   position: relative; z-index: 1;
   width: 100%; max-width: 440px;
-  min-height: 100dvh;
-  padding: 1.75rem 1rem 104px;
+  flex: 1 0 auto;
+  padding: 1.75rem 1rem 2rem;
   display: flex; flex-direction: column; gap: 1.25rem;
 }
 
@@ -626,13 +626,15 @@ body {
    PIED DE PAGE
    ══════════════════════════════════════════════════════════════ */
 .app-footer {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 998;
+  /* En flux, placé en dernier dans <body> (flex column) : après la section
+     « À propos », et collé en bas de l'écran quand la page est courte. */
+  order: 1;
+  position: relative; z-index: 1;
+  width: 100%;
+  margin-top: auto;
   padding: 8px 12px 10px;
   text-align: center;
-  background: color-mix(in oklab, var(--bg) 82%, transparent);
   border-top: 1px solid var(--card-line);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 }
 .footer-link {
   font-size: 11.5px; white-space: nowrap;
@@ -815,8 +817,7 @@ body.theme-light #cc-main .pm {
 .seo-about {
   position: relative; z-index: 1;
   width: 100%; max-width: 440px;
-  margin-top: -64px;
-  padding: 0 1rem 120px;
+  padding: 0 1rem 2rem;
   color: var(--ink-3);
   font-size: 0.9rem; line-height: 1.6;
 }
@@ -834,7 +835,7 @@ body.theme-light #cc-main .pm {
 
 /* Section « À propos » : repliée, ouverte depuis le lien du footer.
    Le résumé natif est masqué ; le titre visible est le premier h2. */
-.seo-about { margin-top: -48px; scroll-margin-top: 16px; }
+.seo-about { scroll-margin-top: 16px; }
 .seo-about:not([open]) { margin: 0; padding: 0; }
 .seo-about > .seo-toggle { display: none; }
 .seo-about[open] > h2:first-of-type { margin-top: 0.5rem; }
