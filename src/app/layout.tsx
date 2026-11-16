@@ -66,7 +66,8 @@ export const metadata: Metadata = {
   classification: "Application web de tirage au sort",
   icons: {
     icon: [
-      { url: "/favicon.ico" },
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
     apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
@@ -137,9 +138,9 @@ const JSON_LD_GRAPH = {
       url: BASE_URL + "/",
       logo: {
         "@type": "ImageObject",
-        url: BASE_URL + "/android-chrome-512x512.png",
-        width: 512,
-        height: 512,
+        url: BASE_URL + "/logo-1024.png",
+        width: 1024,
+        height: 1024,
       },
     },
     {

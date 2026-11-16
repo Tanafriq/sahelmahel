@@ -288,7 +288,10 @@ export default function App({ defaultLang = "FR" }: { defaultLang?: string }) {
         {/* En-tête */}
         <header className="flex items-start justify-between gap-3" dir="ltr">
           <div className="header-title" dir={isArabic ? "rtl" : "ltr"}>
+            <div className="title-row" dir="ltr">
+            <img src="/logo.svg" alt="" className="app-logo" width={44} height={44} />
             <h1
+              dir={isArabic ? "rtl" : "ltr"}
               key={`${lang}-${titleWave}`}
               className={`app-title ${lang === "ES" || lang === "TZM" || lang === "DZ" ? "is-long" : ""}`}
               onClick={waveTitle}
@@ -301,6 +304,7 @@ export default function App({ defaultLang = "FR" }: { defaultLang?: string }) {
                   ))
                 : <span className="title-letter">{t.title}</span>}
             </h1>
+            </div>
             <p className="app-subtitle">{t.subtitle}</p>
           </div>
           <div dir="ltr">

@@ -149,6 +149,10 @@ body {
 
 /* ── Titre ── */
 .header-title { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.title-row { display: flex; align-items: center; justify-content: center; gap: 0.5rem; max-width: 100%; }
+.app-logo { width: clamp(2.25rem, 9.5vw, 2.75rem); height: auto; border-radius: 22%; box-shadow: 0 3px 0 color-mix(in oklab, var(--pal-accent) 70%, transparent); flex: none; cursor: pointer; transition: transform 0.6s cubic-bezier(.2,.8,.2,1); }
+.app-logo:hover { transform: rotate(-8deg) scale(1.06); }
+@media (prefers-reduced-motion: reduce) { .app-logo:hover { transform: none; } }
 .app-title {
   font-weight: 800;
   font-size: clamp(1.6rem, 7.6vw, 2.35rem);
