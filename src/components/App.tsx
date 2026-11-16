@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { useState, useRef, useEffect, useLayoutEffect, useCallback, useMemo } from "react";
 import { PALETTES } from "@/lib/constants";
 import { TEXT } from "@/lib/translations";
 import { applyPalette, shareLink } from "@/lib/utils";
@@ -108,6 +108,7 @@ export default function App({ defaultLang = "FR" }: { defaultLang?: string }) {
   const wheelRef = useRef<WheelHandle>(null);
   const stageRef = useRef<HTMLElement>(null);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const titleBoxRef = useRef<HTMLDivElement>(null);
   const t = TEXT[lang] || TEXT["FR"];
   const isArabic = lang === "AR" || lang === "DZ";
 
@@ -279,6 +280,42 @@ export default function App({ defaultLang = "FR" }: { defaultLang?: string }) {
   const wheelNames = names.filter((n) => !leaving.includes(n));
   const winnerIndex = wheelNames.indexOf(winner);
 
+  // Le logo + titre ne doivent jamais toucher les boutons, quelles que soient la langue et la largeur :
+  // on réduit d'abord le titre ; s'il devrait passer sous MIN_SIDE px, les boutons passent au-dessus
+  // (header[data-stacked]) et le titre prend toute la largeur.
+  useLayoutEffect(() => {
+    const box = titleBoxRef.current;
+    const header = box?.parentElement;
+    const actions = box?.nextElementSibling as HTMLElement | null | undefined;
+    const row = box?.querySelector<HTMLElement>(".title-row");
+    const logo = row?.querySelector<HTMLElement>(".app-logo");
+    const h1 = row?.querySelector<HTMLElement>(".app-title");
+    if (!box || !header || !actions || !row || !logo || !h1) return;
+    const MIN_SIDE = 18;
+    const SHADOW = 4; // ombre portée du titre
+    const fit = () => {
+      h1.style.fontSize = "";
+      const base = parseFloat(getComputedStyle(h1).fontSize);
+      const natural = h1.scrollWidth;
+      const rowGap = parseFloat(getComputedStyle(row).columnGap) || 0;
+      const headerGap = parseFloat(getComputedStyle(header).columnGap) || 0;
+      const titleSpace = (w: number) => w - logo.offsetWidth - rowGap - SHADOW;
+      const side = titleSpace(header.clientWidth - actions.offsetWidth - headerGap);
+      const stacked = natural > side && (base * side) / natural < MIN_SIDE;
+      header.dataset.stacked = String(stacked);
+      const room = stacked ? titleSpace(header.clientWidth) : side;
+      if (natural > room && room > 0) {
+        h1.style.fontSize = `${Math.max(14, Math.floor(((base * room) / natural) * 10) / 10)}px`;
+      }
+    };
+    fit();
+    // On observe l'en-tête (sa largeur ne dépend pas de l'empilement) : pas de boucle de redimensionnement.
+    const ro = new ResizeObserver(fit);
+    ro.observe(header);
+    document.fonts?.ready.then(fit);
+    return () => ro.disconnect();
+  }, [lang, t.title, titleWave]);
+
   return (
     <>
       <Backdrop />
@@ -286,8 +323,8 @@ export default function App({ defaultLang = "FR" }: { defaultLang?: string }) {
 
       <main className="shell" dir={isArabic ? "rtl" : "ltr"}>
         {/* En-tête */}
-        <header className="flex items-start justify-between gap-3" dir="ltr">
-          <div className="header-title" dir={isArabic ? "rtl" : "ltr"}>
+        <header className="flex items-start justify-between gap-4" dir="ltr">
+          <div className="header-title" ref={titleBoxRef} dir={isArabic ? "rtl" : "ltr"}>
             <div className="title-row" dir="ltr">
             <img src="/logo.svg" alt="" className="app-logo" width={44} height={44} />
             <h1
